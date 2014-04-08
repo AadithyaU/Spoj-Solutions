@@ -30,7 +30,7 @@ int main() {
 					int pos = posi[(int) c - 'a'];
 					pos = (pos + ( 21 * cnt)) % 5;
 					en[i] = vowels[pos];
-				} 
+				}
 		}
 		en[i] = '\0';
 		printf("%s\n",en);
