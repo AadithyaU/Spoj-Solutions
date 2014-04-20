@@ -3,12 +3,12 @@
 #include <string.h>
 using namespace std;
 
-long double dp[121][11][301];
+double dp[120][10][300];
 
-long double findprob(int balls,int wkt,int target) {
+double findprob(int balls,int wkt,int target) {
 	
-	if(target <= 0) return 1.0;
-	if(wkt == 10 || balls == 120) return 0.0;
+	if(target <= 0) return 1;
+	if(wkt == 10 || balls == 120) return 0;
 	if(int(dp[balls][wkt][target]) >= 0) return dp[balls][wkt][target];
 	return dp[balls][wkt][target] = 
 		 (findprob(balls+1,wkt,target)  
@@ -20,18 +20,15 @@ long double findprob(int balls,int wkt,int target) {
 		+ findprob(balls+1,wkt,target-6) 
 		+ findprob(balls+1,wkt+1,target) 
 		+ findprob(balls,wkt,target-1) 
-		+ findprob(balls,wkt,target-1)) / 10.0;
+		+ findprob(balls,wkt,target-1)) / 10;
 
 }
 
 int main() {
 	int t;
 	scanf("%d",&t);
+	memset(dp,-1.0,sizeof(dp));
 	while(t--) {
-		for(int j = 0; j < 121; j++) 
-			for(int k = 0; k < 11;k++)
-				for(int l = 0; l < 301; l++) 
-					dp[j][k][l] = -1;
 		int target;
 		float overs;
 		char score[6];int i;
@@ -39,22 +36,21 @@ int main() {
 		int curscore=0;int curwkt=0;
 		for(i = 0; score[i]; i++) 
 			if(score[i] == '/') break;
-	
 		for(int j = 0; j < i; j++) 
 			curscore = (curscore * 10) + (score[j] - '0');
 		for(int j = i + 1; score[j]; j++) 
 			curwkt = (curwkt * 10) + (score[j] - '0');
-		if(curscore >= target) {
-			printf("100.00\n");
-			continue;
-		} 
-		if(curwkt == 10) {
-			printf("0.00\n");
-			continue;
-		}
 		int noofballs = (int(overs) * 6) + 10 * (overs - int(overs));
-		long double ans = findprob(noofballs,curwkt,target - curscore);
-		printf("%Lf\n",ans * 100);
+		double ans = findprob(noofballs,curwkt,target - curscore);
+		char val[2000]; int l;
+		sprintf(val,"%.12lf",ans * 100);
+		for(l = 0; val[l]; l++) {
+			if(val[l] == '.') break;
+			printf("%c",val[l]);
+		}
+		for(int k = l; k < l + 3; k++) 
+			printf("%c",val[k]);
+		printf("\n");
 	}
 	return 0;
 }
