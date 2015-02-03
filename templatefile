@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define L long
+#define LL long long
+#define UL unsigned long
+#define ULL unsigned long long 
+
+#define sd(x) scanf("%d",&x)
+#define sd2(x,y) scanf("%d %d",&x,&y)
+#define sd3(x,y,z) scanf("%d %d %d",&x,&y,&z)
+#define ss(x) scanf("%s",x)
+#define sc(x) scanf("%c",&x)
+#define sld(x) scanf("%ld",&x)
+#define slu(x) scanf("%lu",&x)
+#define slld(x) scanf("%ld",&x)
+#define sllu(x) scanf("%llu",&x)
+#define sf(x) scanf("%f",&x)
+#define slf(x) scanf("%lf",&x)
+
+#define REP(i,x,n) (for(int i = x;i < n; i++))
+#define pb push_back
+#define V vector
+#define P pair
+#define M map
+#define I int
+#define C char
+#define F float
+
+#define prs(s) printf("%s",s)
+#define prsn(s) printf("%s\n",s)
+#define prss(s) printf("%s ",s)
+#define prst(s) printf("%s\t",s)
+#define pri(s) printf("%d",s)
+#define prin(s) printf("%d\n",s)
+#define pris(s) printf("%d ",s)
+#define prit(s) printf("%d\t",s)
+#define R return
+#define DESC(i) greater<i>()
+
+
+int main() {
+	int t;
+	return 0;
+}
